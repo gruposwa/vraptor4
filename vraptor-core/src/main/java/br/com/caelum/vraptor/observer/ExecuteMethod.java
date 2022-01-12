@@ -17,6 +17,17 @@
 
 package br.com.caelum.vraptor.observer;
 
+import java.lang.reflect.Method;
+import java.util.concurrent.Callable;
+
+import javax.enterprise.context.Dependent;
+import javax.enterprise.event.Event;
+import javax.enterprise.event.Observes;
+import javax.inject.Inject;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import br.com.caelum.vraptor.controller.ControllerMethod;
 import br.com.caelum.vraptor.core.MethodInfo;
 import br.com.caelum.vraptor.core.ReflectionProvider;
@@ -25,16 +36,6 @@ import br.com.caelum.vraptor.events.InterceptorsExecuted;
 import br.com.caelum.vraptor.events.MethodExecuted;
 import br.com.caelum.vraptor.events.MethodReady;
 import br.com.caelum.vraptor.validator.Messages;
-import org.slf4j.Logger;
-
-import javax.enterprise.context.Dependent;
-import javax.enterprise.event.Event;
-import javax.enterprise.event.Observes;
-import javax.inject.Inject;
-import java.lang.reflect.Method;
-import java.util.concurrent.Callable;
-
-import static org.slf4j.LoggerFactory.getLogger;
 
 /**
  * Observer that executes the logic method.
@@ -46,8 +47,9 @@ import static org.slf4j.LoggerFactory.getLogger;
 @Dependent
 public class ExecuteMethod {
 
-	private final static Logger log = getLogger(ExecuteMethod.class);
-
+	//private final static Logger log = getLogger(ExecuteMethod.class);
+	private static final Logger log = LogManager.getLogger(ExecuteMethod.class);
+	
 	private final MethodInfo methodInfo;
 	private final Messages messages;
 	private final ReflectionProvider reflectionProvider;

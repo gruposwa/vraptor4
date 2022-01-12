@@ -27,8 +27,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.View;
@@ -42,8 +42,8 @@ import br.com.caelum.vraptor.validator.Messages;
  */
 @RequestScoped
 public class DefaultResult extends AbstractResult {
-	
-	private static final Logger logger = LoggerFactory.getLogger(DefaultResult.class);
+	private static final Logger logger = LogManager.getLogger(DefaultResult.class);
+	//private static final Logger logger = LoggerFactory.getLogger(DefaultResult.class);
 
 	private final HttpServletRequest request;
 	private final Container container;

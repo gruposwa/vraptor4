@@ -35,12 +35,6 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import javassist.CannotCompileException;
-import javassist.ClassPool;
-import javassist.CtClass;
-import javassist.CtMethod;
-import javassist.NotFoundException;
-
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.ApplicationScoped;
@@ -48,8 +42,10 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.ServletContext;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.google.common.collect.ForwardingMap;
 
 import br.com.caelum.vraptor.controller.BeanClass;
 import br.com.caelum.vraptor.core.ReflectionProvider;
@@ -59,8 +55,11 @@ import br.com.caelum.vraptor.proxy.Proxifier;
 import br.com.caelum.vraptor.proxy.ProxyCreationException;
 import br.com.caelum.vraptor.proxy.SuperMethod;
 import br.com.caelum.vraptor.util.StringUtils;
-
-import com.google.common.collect.ForwardingMap;
+import javassist.CannotCompileException;
+import javassist.ClassPool;
+import javassist.CtClass;
+import javassist.CtMethod;
+import javassist.NotFoundException;
 
 /**
  * View helper for generating uris
@@ -73,8 +72,9 @@ import com.google.common.collect.ForwardingMap;
 @ApplicationScoped
 public class LinkToHandler extends ForwardingMap<Class<?>, Object> {
 
-	private static final Logger logger = LoggerFactory.getLogger(LinkToHandler.class);
-
+	//private static final Logger logger = LoggerFactory.getLogger(LinkToHandler.class);
+	private static final Logger logger = LogManager.getLogger(LinkToHandler.class);
+	
 	private final ServletContext context;
 	private final Router router;
 	private final Proxifier proxifier;

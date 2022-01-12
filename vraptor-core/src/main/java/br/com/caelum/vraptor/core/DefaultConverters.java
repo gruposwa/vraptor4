@@ -26,8 +26,10 @@ import javax.annotation.Priority;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.google.common.base.Supplier;
 
 import br.com.caelum.vraptor.Convert;
 import br.com.caelum.vraptor.TwoWayConverter;
@@ -35,8 +37,6 @@ import br.com.caelum.vraptor.cache.CacheStore;
 import br.com.caelum.vraptor.cache.LRU;
 import br.com.caelum.vraptor.converter.Converter;
 import br.com.caelum.vraptor.ioc.Container;
-
-import com.google.common.base.Supplier;
 
 /**
  * Default implementation for {@link Converters}.
@@ -49,7 +49,8 @@ import com.google.common.base.Supplier;
 @ApplicationScoped
 public class DefaultConverters implements Converters {
 
-	private final Logger logger = LoggerFactory.getLogger(DefaultConverters.class);
+	//private final Logger logger = LoggerFactory.getLogger(DefaultConverters.class);
+	private static final Logger logger = LogManager.getLogger(DefaultConverters.class);
 	private final List<Class<? extends Converter<?>>> classes = new LinkedList<>();
 
 	private final CacheStore<Class<?>, Class<? extends Converter<?>>> cache;

@@ -28,8 +28,8 @@ import javax.enterprise.inject.Vetoed;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * A request capable of adding new parameters.
@@ -40,8 +40,9 @@ import org.slf4j.LoggerFactory;
 @Vetoed
 public class VRaptorRequest extends HttpServletRequestWrapper implements MutableRequest {
 
-	private static final Logger logger = LoggerFactory.getLogger(VRaptorRequest.class);
-
+	//private static final Logger logger = LoggerFactory.getLogger(VRaptorRequest.class);
+	private static final Logger logger = LogManager.getLogger(VRaptorRequest.class);
+	
 	private final Map<String, String[]> extraParameters = new HashMap<>();
 
 	public VRaptorRequest(HttpServletRequest request) {

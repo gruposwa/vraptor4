@@ -30,8 +30,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.controller.ControllerMethod;
@@ -56,8 +56,9 @@ import br.com.caelum.vraptor.proxy.SuperMethod;
 @RequestScoped
 public class DefaultLogicResult implements LogicResult {
 
-	private static final Logger logger = LoggerFactory.getLogger(DefaultLogicResult.class);
-
+	//private static final Logger logger = LoggerFactory.getLogger(DefaultLogicResult.class);
+	private static final Logger logger = LogManager.getLogger(DefaultLogicResult.class);
+	
 	private final Proxifier proxifier;
 	private final Router router;
 	private final MutableRequest request;

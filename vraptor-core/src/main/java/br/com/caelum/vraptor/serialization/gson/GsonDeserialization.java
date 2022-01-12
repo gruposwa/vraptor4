@@ -30,8 +30,15 @@ import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.google.common.io.CharStreams;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import br.com.caelum.vraptor.Consumes;
 import br.com.caelum.vraptor.controller.ControllerMethod;
@@ -44,13 +51,6 @@ import br.com.caelum.vraptor.serialization.DeserializerConfig;
 import br.com.caelum.vraptor.serialization.Deserializes;
 import br.com.caelum.vraptor.view.ResultException;
 
-import com.google.common.io.CharStreams;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
 /**
  * A GSON deserializer.
  * @author Renan Reis
@@ -60,8 +60,9 @@ import com.google.gson.JsonParser;
 @Deserializes({ "application/json", "json" })
 public class GsonDeserialization implements Deserializer {
 
-	private static final Logger logger = LoggerFactory.getLogger(GsonDeserialization.class);
-
+	//private static final Logger logger = LoggerFactory.getLogger(GsonDeserialization.class);
+	private static final Logger logger = LogManager.getLogger(GsonDeserialization.class);
+	
 	private final GsonDeserializerBuilder builder;
 	private final ParameterNameProvider paramNameProvider;
 	private final HttpServletRequest request;
@@ -92,8 +93,22 @@ public class GsonDeserialization implements Deserializer {
 		if (types.length == 0) {
 			throw new IllegalArgumentException("Methods that consumes representations must receive just one argument");
 		}
-
-		Gson gson = builder.create();
+		
+		// Checks if there are a custom builder attached to @Consumes annotation.
+		Class<? extends GsonInterfaceBuilder>[] builders = method.getMethod().getAnnotation(Consumes.class).builder();
+		
+		Gson gson = null;
+		if(builders != null && builders.length > 0) {
+			try {
+				GsonInterfaceBuilder gib = builders[0].newInstance();
+				
+				gson = gib.create();
+			} catch (InstantiationException | IllegalAccessException e) {
+				e.printStackTrace();
+			}
+		}else {
+			gson = builder.create();
+		}
 		
 		final Parameter[] parameterNames = paramNameProvider.parametersFor(method.getMethod());
 		final Object[] values = new Object[parameterNames.length];

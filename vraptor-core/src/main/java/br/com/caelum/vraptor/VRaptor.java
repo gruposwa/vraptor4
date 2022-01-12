@@ -17,8 +17,6 @@
 
 package br.com.caelum.vraptor;
 
-import static org.slf4j.LoggerFactory.getLogger;
-
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -38,7 +36,8 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.slf4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import br.com.caelum.vraptor.core.StaticContentHandler;
 import br.com.caelum.vraptor.events.RequestStarted;
@@ -58,10 +57,10 @@ import br.com.caelum.vraptor.ioc.cdi.CDIRequestFactories;
 @WebFilter(filterName="vraptor", urlPatterns="/*", dispatcherTypes={DispatcherType.FORWARD, DispatcherType.REQUEST}, asyncSupported=true)
 public class VRaptor implements Filter {
 
-	public static final String VERSION = "4.3.0-beta-3-SNAPSHOT";
+	public static final String VERSION = "4.4.0-beta-1-SNAPSHOT";
 
-	private final Logger logger = getLogger(VRaptor.class);
-
+	//private final Logger logger = getLogger(VRaptor.class);
+	private static final Logger logger = LogManager.getLogger(VRaptor.class);
 
 	private ServletContext servletContext;
 

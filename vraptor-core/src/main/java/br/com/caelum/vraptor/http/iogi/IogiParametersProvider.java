@@ -30,8 +30,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import br.com.caelum.iogi.parameters.Parameters;
 import br.com.caelum.iogi.reflection.Target;
@@ -43,8 +43,8 @@ import br.com.caelum.vraptor.validator.Message;
 
 @RequestScoped
 public class IogiParametersProvider implements ParametersProvider {
-	private static final Logger LOGGER = LoggerFactory.getLogger(IogiParametersProvider.class);
-	
+	//private static final Logger LOGGER = LoggerFactory.getLogger(IogiParametersProvider.class);
+	private static final Logger LOGGER = LogManager.getLogger(IogiParametersProvider.class);
 	private final ParameterNameProvider nameProvider;
 	private final HttpServletRequest servletRequest;
 	private final InstantiatorWithErrors instantiator;

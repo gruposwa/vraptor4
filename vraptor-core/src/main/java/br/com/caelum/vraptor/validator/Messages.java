@@ -15,8 +15,6 @@
  */
 package br.com.caelum.vraptor.validator;
 
-import static org.slf4j.LoggerFactory.getLogger;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +23,10 @@ import java.util.Map;
 
 import javax.enterprise.inject.Vetoed;
 
-import org.slf4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import br.com.caelum.vraptor.validator.beanvalidation.MessageInterpolatorFactory;
 
 /**
  * Managed class that stores all application messages like errors, warnings and info. This
@@ -45,8 +46,8 @@ public class Messages implements Serializable {
 
 	private static final long serialVersionUID = 728589528391504120L;
 
-	private final static Logger log = getLogger(Messages.class);
-	
+	//private final static Logger log = getLogger(Messages.class);
+	private static final Logger log = LogManager.getLogger(Messages.class);
 	private final Map<Severity, List<Message>> messages = new HashMap<>();
 	private boolean unhandledErrors;
 

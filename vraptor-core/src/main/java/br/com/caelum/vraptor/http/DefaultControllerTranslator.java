@@ -20,8 +20,8 @@ package br.com.caelum.vraptor.http;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import br.com.caelum.vraptor.controller.ControllerMethod;
 import br.com.caelum.vraptor.controller.HttpMethod;
@@ -37,8 +37,9 @@ import br.com.caelum.vraptor.http.route.Router;
 @ApplicationScoped
 public class DefaultControllerTranslator implements UrlToControllerTranslator {
 
-	private final Logger logger = LoggerFactory.getLogger(DefaultControllerTranslator.class);
-
+	//private final Logger logger = LoggerFactory.getLogger(DefaultControllerTranslator.class);
+	private static final Logger logger = LogManager.getLogger(DefaultControllerTranslator.class);
+	
 	private final Router router;
 
 	/** 

@@ -16,13 +16,12 @@
  */
 package br.com.caelum.vraptor.ioc;
 
-import static org.slf4j.LoggerFactory.getLogger;
-
 import javax.enterprise.context.Dependent;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
-import org.slf4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import br.com.caelum.vraptor.controller.BeanClass;
 import br.com.caelum.vraptor.core.InterceptsQualifier;
@@ -35,8 +34,8 @@ import br.com.caelum.vraptor.interceptor.InterceptorValidator;
 @Dependent
 public class InterceptorStereotypeHandler {
 
-	private static final Logger logger = getLogger(InterceptorStereotypeHandler.class);
-
+	//private static final Logger logger = getLogger(InterceptorStereotypeHandler.class);
+	private static final Logger logger = LogManager.getLogger(InterceptorStereotypeHandler.class);
 	private final InterceptorRegistry registry;
 	private final InterceptorValidator interceptorValidator;
 

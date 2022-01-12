@@ -34,8 +34,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.ServletContext;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * A default {@link Environment} implementation which loads the environment file based on {@code VRAPTOR_ENV} system 
@@ -51,7 +51,8 @@ import org.slf4j.LoggerFactory;
 @Named("environment")
 public class DefaultEnvironment implements Environment {
 
-	private static final Logger LOG = LoggerFactory.getLogger(DefaultEnvironment.class);
+	//private static final Logger LOG = LoggerFactory.getLogger(DefaultEnvironment.class);
+	private static final Logger LOG = LogManager.getLogger(DefaultEnvironment.class);
 	public static final String ENVIRONMENT_PROPERTY = "br.com.caelum.vraptor.environment";
 	public static final String BASE_ENVIRONMENT_FILE = "environment";
 

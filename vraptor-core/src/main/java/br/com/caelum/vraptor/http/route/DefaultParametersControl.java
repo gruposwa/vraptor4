@@ -32,8 +32,8 @@ import java.util.regex.Pattern;
 
 import javax.enterprise.inject.Vetoed;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import br.com.caelum.vraptor.TwoWayConverter;
 import br.com.caelum.vraptor.core.Converters;
@@ -50,7 +50,8 @@ import br.com.caelum.vraptor.util.StringUtils;
 @Vetoed
 public class DefaultParametersControl implements ParametersControl {
 
-	private static final Logger logger = LoggerFactory.getLogger(DefaultParametersControl.class);
+	//private static final Logger logger = LoggerFactory.getLogger(DefaultParametersControl.class);
+	private static final Logger logger = LogManager.getLogger(DefaultParametersControl.class);
 	private final List<String> parameters = new ArrayList<>();
 	private final Pattern pattern;
 	private final String originalPattern;

@@ -1,14 +1,13 @@
 package br.com.caelum.vraptor.observer;
 
-import static org.slf4j.LoggerFactory.getLogger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import org.slf4j.Logger;
+import com.google.common.base.Throwables;
 
 import br.com.caelum.vraptor.core.ReflectionProviderException;
 import br.com.caelum.vraptor.interceptor.ApplicationLogicException;
 import br.com.caelum.vraptor.validator.ValidationException;
-
-import com.google.common.base.Throwables;
 
 /**
  * Handles exceptions thrown by a controller method
@@ -16,8 +15,9 @@ import com.google.common.base.Throwables;
  * @author Chico Sokol
  */
 public class ExecuteMethodExceptionHandler {
-	private final static Logger log = getLogger(ExecuteMethodExceptionHandler.class);
-
+	//private final static Logger log = getLogger(ExecuteMethodExceptionHandler.class);
+	private static final Logger log = LogManager.getLogger(ExecuteMethodExceptionHandler.class);
+	
 	public void handle(Exception exception) {
 		if (exception instanceof ReflectionProviderException) {
 			throwIfNotValidationException(exception, exception.getCause());

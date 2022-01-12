@@ -17,8 +17,6 @@
 
 package br.com.caelum.vraptor.core;
 
-import static org.slf4j.LoggerFactory.getLogger;
-
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -27,13 +25,15 @@ import javax.enterprise.event.Event;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 
-import org.slf4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import br.com.caelum.vraptor.InterceptionException;
 import br.com.caelum.vraptor.controller.ControllerInstance;
 import br.com.caelum.vraptor.controller.ControllerMethod;
 import br.com.caelum.vraptor.events.InterceptorsExecuted;
 import br.com.caelum.vraptor.events.InterceptorsReady;
+import br.com.caelum.vraptor.view.DefaultLogicResult;
 
 /**
  * Default implementation of an {@link InterceptorStack}
@@ -44,7 +44,8 @@ import br.com.caelum.vraptor.events.InterceptorsReady;
 @RequestScoped
 public class DefaultInterceptorStack implements InterceptorStack {
 
-	private static final Logger logger = getLogger(DefaultInterceptorStack.class);
+	//private static final Logger logger = getLogger(DefaultInterceptorStack.class);
+	private static final Logger logger = LogManager.getLogger(DefaultInterceptorStack.class);
 	private final InterceptorStackHandlersCache cache;
 	private final LinkedList<Iterator<InterceptorHandler>> internalStack = new LinkedList<>();
 	private final Instance<ControllerMethod> controllerMethod;

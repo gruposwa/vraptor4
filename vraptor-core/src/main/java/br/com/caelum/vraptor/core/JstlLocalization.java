@@ -30,8 +30,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.jstl.core.Config;
 import javax.servlet.jsp.jstl.fmt.LocalizationContext;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import br.com.caelum.vraptor.util.EmptyBundle;
 import br.com.caelum.vraptor.util.SafeResourceBundle;
@@ -45,8 +45,8 @@ import br.com.caelum.vraptor.util.SafeResourceBundle;
 @RequestScoped
 public class JstlLocalization {
 
-	private static final Logger logger = LoggerFactory.getLogger(JstlLocalization.class);
-
+	//private static final Logger logger = LoggerFactory.getLogger(JstlLocalization.class);
+	private static final Logger logger = LogManager.getLogger(JstlLocalization.class);
 	private static final String DEFAULT_BUNDLE_NAME = "messages";
 
 	private final HttpServletRequest request;

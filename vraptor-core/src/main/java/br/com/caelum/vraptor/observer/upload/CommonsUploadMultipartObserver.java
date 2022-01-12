@@ -18,7 +18,6 @@ package br.com.caelum.vraptor.observer.upload;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
 import static org.apache.commons.fileupload.disk.DiskFileItemFactory.DEFAULT_SIZE_THRESHOLD;
-import static org.slf4j.LoggerFactory.getLogger;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Collection;
@@ -34,17 +33,18 @@ import org.apache.commons.fileupload.FileUploadBase.SizeLimitExceededException;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.slf4j.Logger;
-
-import br.com.caelum.vraptor.events.ControllerFound;
-import br.com.caelum.vraptor.http.MutableRequest;
-import br.com.caelum.vraptor.validator.I18nMessage;
-import br.com.caelum.vraptor.validator.Validator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Multiset;
+
+import br.com.caelum.vraptor.events.ControllerFound;
+import br.com.caelum.vraptor.http.MutableRequest;
+import br.com.caelum.vraptor.validator.I18nMessage;
+import br.com.caelum.vraptor.validator.Validator;
 
 /**
  * A multipart observer based on Apache Commons FileUpload.
@@ -56,8 +56,9 @@ import com.google.common.collect.Multiset;
 @ApplicationScoped
 public class CommonsUploadMultipartObserver {
 
-	private static final Logger logger = getLogger(CommonsUploadMultipartObserver.class);
-
+	//private static final Logger logger = getLogger(CommonsUploadMultipartObserver.class);
+	private static final Logger logger = LogManager.getLogger(CommonsUploadMultipartObserver.class);
+	
 	public void upload(@Observes ControllerFound event, MutableRequest request,
 			MultipartConfig config, Validator validator) {
 

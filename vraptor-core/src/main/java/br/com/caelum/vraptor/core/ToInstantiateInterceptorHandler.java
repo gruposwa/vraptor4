@@ -17,16 +17,18 @@
 
 package br.com.caelum.vraptor.core;
 
+import java.util.concurrent.Callable;
+
+import javax.enterprise.inject.Vetoed;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import br.com.caelum.vraptor.InterceptionException;
 import br.com.caelum.vraptor.controller.ControllerMethod;
 import br.com.caelum.vraptor.interceptor.Interceptor;
 import br.com.caelum.vraptor.ioc.Container;
 import br.com.caelum.vraptor.observer.ExecuteMethodExceptionHandler;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.enterprise.inject.Vetoed;
-import java.util.concurrent.Callable;
 
 /**
  * Instantiates the interceptor on the fly and executes its method.
@@ -36,8 +38,9 @@ import java.util.concurrent.Callable;
 @Vetoed
 public class ToInstantiateInterceptorHandler implements InterceptorHandler {
 
-	private static final Logger logger = LoggerFactory.getLogger(ToInstantiateInterceptorHandler.class);
-
+	//private static final Logger logger = LoggerFactory.getLogger(ToInstantiateInterceptorHandler.class);
+	private static final Logger logger = LogManager.getLogger(ToInstantiateInterceptorHandler.class);
+	
 	private final Container container;
 	private final Class<?> type;
 	private final ExecuteMethodExceptionHandler executeMethodExceptionHandler;

@@ -15,14 +15,13 @@
  */
 package br.com.caelum.vraptor.serialization.xstream;
 
-import static org.slf4j.LoggerFactory.getLogger;
-
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Any;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 
-import org.slf4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.Converter;
@@ -40,8 +39,9 @@ public class XStreamConverters {
 	private final Iterable<Converter> converters;
 	private final Iterable<SingleValueConverter> singleValueConverters;
 
-	private static final Logger logger = getLogger(XStreamConverters.class);
-
+	//private static final Logger logger = getLogger(XStreamConverters.class);
+	private static final Logger logger = LogManager.getLogger(XStreamConverters.class);
+	
 	/** 
 	 * @deprecated CDI eyes only
 	 */

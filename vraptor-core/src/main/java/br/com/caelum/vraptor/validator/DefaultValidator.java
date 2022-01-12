@@ -30,8 +30,8 @@ import javax.inject.Inject;
 import javax.validation.ConstraintViolation;
 import javax.validation.MessageInterpolator;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.View;
@@ -48,8 +48,9 @@ import br.com.caelum.vraptor.view.ValidationViewsFactory;
 @RequestScoped
 public class DefaultValidator extends AbstractValidator {
 
-	private static final Logger logger = LoggerFactory.getLogger(DefaultValidator.class);
-
+	//private static final Logger logger = LoggerFactory.getLogger(DefaultValidator.class);
+	private static final Logger logger = LogManager.getLogger(DefaultValidator.class);
+	
 	private final Result result;
 	private final ValidationViewsFactory viewsFactory;
 	private final Outjector outjector;

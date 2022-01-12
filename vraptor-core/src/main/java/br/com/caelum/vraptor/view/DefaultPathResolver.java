@@ -20,8 +20,8 @@ package br.com.caelum.vraptor.view;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import br.com.caelum.vraptor.controller.ControllerMethod;
 import br.com.caelum.vraptor.http.FormatResolver;
@@ -37,7 +37,8 @@ import br.com.caelum.vraptor.http.FormatResolver;
 @RequestScoped
 public class DefaultPathResolver implements PathResolver {
 
-	private static final Logger logger = LoggerFactory.getLogger(DefaultPathResolver.class);
+	//private static final Logger logger = LoggerFactory.getLogger(DefaultPathResolver.class);
+	private static final Logger logger = LogManager.getLogger(DefaultPathResolver.class);
 	private final FormatResolver resolver;
 	
 	/** 

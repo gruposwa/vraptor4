@@ -17,14 +17,13 @@
 
 package br.com.caelum.vraptor.observer;
 
-import static org.slf4j.LoggerFactory.getLogger;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
-import org.slf4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import br.com.caelum.vraptor.controller.ControllerMethod;
 import br.com.caelum.vraptor.controller.ControllerNotFoundHandler;
@@ -52,8 +51,9 @@ import br.com.caelum.vraptor.http.route.MethodNotAllowedException;
 @ApplicationScoped
 public class RequestHandlerObserver {
 
-	private static final Logger LOGGER = getLogger(RequestHandlerObserver.class);
-
+	//private static final Logger LOGGER = getLogger(RequestHandlerObserver.class);
+	private static final Logger LOGGER = LogManager.getLogger(RequestHandlerObserver.class);
+	
 	private final UrlToControllerTranslator translator;
 	private final ControllerNotFoundHandler controllerNotFoundHandler;
 	private final MethodNotAllowedHandler methodNotAllowedHandler;

@@ -17,17 +17,16 @@
 
 package br.com.caelum.vraptor.observer;
 
-import static org.slf4j.LoggerFactory.getLogger;
-
 import javax.enterprise.context.Dependent;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
-import org.slf4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import br.com.caelum.vraptor.Result;
-import br.com.caelum.vraptor.events.RequestSucceded;
 import br.com.caelum.vraptor.events.MethodExecuted;
+import br.com.caelum.vraptor.events.RequestSucceded;
 import br.com.caelum.vraptor.view.Results;
 
 /**
@@ -43,8 +42,8 @@ public class ForwardToDefaultView {
 	
 	private final Result result;
 
-	private static final Logger logger = getLogger(ForwardToDefaultView.class);
-
+	//private static final Logger logger = getLogger(ForwardToDefaultView.class);
+	private static final Logger logger = LogManager.getLogger(ForwardToDefaultView.class);
 	/** 
 	 * @deprecated CDI eyes only
 	 */

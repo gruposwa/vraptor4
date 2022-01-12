@@ -25,8 +25,8 @@ import java.util.Map.Entry;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.proxy.Proxifier;
@@ -42,8 +42,8 @@ import br.com.caelum.vraptor.proxy.Proxifier;
 @RequestScoped
 public class DefaultExceptionMapper implements ExceptionMapper {
 
-	private static final Logger logger = LoggerFactory.getLogger(DefaultExceptionMapper.class);
-
+	//private static final Logger logger = LoggerFactory.getLogger(DefaultExceptionMapper.class);
+	private static final Logger logger = LogManager.getLogger(DefaultExceptionMapper.class);
 	private final Map<Class<? extends Exception>, ExceptionRecorder<Result>> exceptions;
 	private final Proxifier proxifier;
 	private final ReflectionProvider reflectionProvider;

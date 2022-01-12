@@ -21,8 +21,8 @@ import static com.google.common.base.Throwables.getRootCause;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import br.com.caelum.vraptor.InterceptionException;
 import br.com.caelum.vraptor.Intercepts;
@@ -45,8 +45,8 @@ import br.com.caelum.vraptor.core.InterceptorStack;
 @RequestScoped
 public class ExceptionHandlerInterceptor implements Interceptor {
 
-	private static final Logger logger = LoggerFactory.getLogger(ExceptionHandlerInterceptor.class);
-
+	//private static final Logger logger = LoggerFactory.getLogger(ExceptionHandlerInterceptor.class);
+	private static final Logger logger = LogManager.getLogger(ExceptionHandlerInterceptor.class);
 	private final ExceptionMapper exceptions;
 	private final Result result;
 

@@ -26,8 +26,8 @@ import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import br.com.caelum.vraptor.controller.DefaultControllerMethod;
 import br.com.caelum.vraptor.core.MethodInfo;
@@ -48,8 +48,9 @@ import br.com.caelum.vraptor.proxy.SuperMethod;
 @Dependent
 public class DefaultPageResult implements PageResult {
 
-	private static final Logger logger = LoggerFactory.getLogger(DefaultPageResult.class);
-
+	//private static final Logger logger = LoggerFactory.getLogger(DefaultPageResult.class);
+	private static final Logger logger = LogManager.getLogger(DefaultPageResult.class);
+	
 	private final MutableRequest request;
 	private final MutableResponse response;
 	private final PathResolver resolver;

@@ -21,8 +21,8 @@ import javax.inject.Inject;
 import javax.validation.MessageInterpolator;
 import javax.validation.ValidatorFactory;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Factory for {@link MessageInterpolator}.
@@ -34,8 +34,8 @@ import org.slf4j.LoggerFactory;
 @ApplicationScoped
 public class MessageInterpolatorFactory{
 
-	private static final Logger logger = LoggerFactory.getLogger(MessageInterpolatorFactory.class);
-
+	//private static final Logger logger = LoggerFactory.getLogger(MessageInterpolatorFactory.class);
+	private static final Logger logger = LogManager.getLogger(MessageInterpolatorFactory.class);
 	private final ValidatorFactory factory;
 	
 	/** 

@@ -28,8 +28,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import br.com.caelum.vraptor.http.VRaptorRequest;
 
@@ -42,8 +42,8 @@ import br.com.caelum.vraptor.http.VRaptorRequest;
 @ApplicationScoped
 public class DefaultStaticContentHandler implements StaticContentHandler {
 
-	private static final Logger logger = LoggerFactory.getLogger(DefaultStaticContentHandler.class);
-
+	//private static final Logger logger = LoggerFactory.getLogger(DefaultStaticContentHandler.class);
+	private static final Logger logger = LogManager.getLogger(DefaultStaticContentHandler.class);
 	private final ServletContext context;
 
 	/** 

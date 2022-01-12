@@ -23,8 +23,8 @@ import java.util.ResourceBundle;
 
 import javax.enterprise.inject.Vetoed;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * A Resource bundle that doesn't throw exception when there is no resource of given key.
@@ -36,7 +36,8 @@ import org.slf4j.LoggerFactory;
 @Vetoed
 public class SafeResourceBundle extends ResourceBundle {
 
-	private static final Logger logger = LoggerFactory.getLogger(SafeResourceBundle.class);
+	//private static final Logger logger = LoggerFactory.getLogger(SafeResourceBundle.class);
+	private static final Logger logger = LogManager.getLogger(SafeResourceBundle.class);
 	private final ResourceBundle delegate;
 	private final boolean isDefault;
 

@@ -19,14 +19,13 @@
  */
 package br.com.caelum.vraptor.ioc;
 
-import static org.slf4j.LoggerFactory.getLogger;
-
 import javax.enterprise.context.Dependent;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 import javax.servlet.ServletContext;
 
-import org.slf4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import br.com.caelum.vraptor.controller.BeanClass;
 import br.com.caelum.vraptor.core.ControllerQualifier;
@@ -40,7 +39,8 @@ import br.com.caelum.vraptor.http.route.RoutesParser;
 @Dependent
 public class ControllerHandler{
 
-	private final Logger logger = getLogger(ControllerHandler.class);
+	//private final Logger logger = getLogger(ControllerHandler.class);
+	private static final Logger logger = LogManager.getLogger(ControllerHandler.class);
 
 	private final Router router;
 	private final RoutesParser parser;

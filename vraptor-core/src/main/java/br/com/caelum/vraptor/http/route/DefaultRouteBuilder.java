@@ -57,8 +57,10 @@ import java.util.Set;
 
 import javax.enterprise.inject.Vetoed;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.google.common.base.Joiner;
 
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.controller.ControllerMethod;
@@ -73,8 +75,6 @@ import br.com.caelum.vraptor.proxy.Proxifier;
 import br.com.caelum.vraptor.proxy.SuperMethod;
 import br.com.caelum.vraptor.util.StringUtils;
 
-import com.google.common.base.Joiner;
-
 /**
  * Should be used in one of two ways, either configure the type and invoke the
  * method or pass the method (java reflection) object.
@@ -86,7 +86,8 @@ import com.google.common.base.Joiner;
  */
 @Vetoed
 public class DefaultRouteBuilder implements RouteBuilder {
-	private static final Logger logger = LoggerFactory.getLogger(DefaultRouteBuilder.class);
+	//private static final Logger logger = LoggerFactory.getLogger(DefaultRouteBuilder.class);
+	private static final Logger logger = LogManager.getLogger(DefaultRouteBuilder.class);
 	
 	private static final List<?> CHARACTER_TYPES = asList(char.class, Character.class);
 	private static final List<?> DECIMAL_TYPES = asList(Double.class, BigDecimal.class, double.class, Float.class, float.class);

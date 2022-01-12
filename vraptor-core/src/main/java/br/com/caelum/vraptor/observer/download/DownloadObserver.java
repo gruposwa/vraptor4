@@ -17,8 +17,6 @@
 
 package br.com.caelum.vraptor.observer.download;
 
-import static org.slf4j.LoggerFactory.getLogger;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,7 +24,8 @@ import java.io.InputStream;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
 
-import org.slf4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.events.MethodExecuted;
@@ -40,7 +39,8 @@ import br.com.caelum.vraptor.events.MethodExecuted;
 @ApplicationScoped
 public class DownloadObserver {
 
-	private static final Logger logger = getLogger(DownloadObserver.class);
+	//private static final Logger logger = getLogger(DownloadObserver.class);
+	private static final Logger logger = LogManager.getLogger(DownloadObserver.class);
 
 	public void download(@Observes MethodExecuted event, Result result) throws IOException {
 		Object methodResult = event.getMethodInfo().getResult();

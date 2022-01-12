@@ -22,8 +22,8 @@ import javax.annotation.Priority;
 import javax.enterprise.context.ApplicationScoped;
 import javax.interceptor.Interceptor;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.thoughtworks.paranamer.AnnotationParanamer;
 import com.thoughtworks.paranamer.BytecodeReadingParanamer;
@@ -40,8 +40,9 @@ import com.thoughtworks.paranamer.Paranamer;
 @ApplicationScoped
 @Priority(Interceptor.Priority.LIBRARY_BEFORE + 10)
 public class ParanamerNameProvider implements ParameterNameProvider {
-	private static final Logger logger = LoggerFactory.getLogger(ParanamerNameProvider.class);
-
+	//private static final Logger logger = LoggerFactory.getLogger(ParanamerNameProvider.class);
+	private static final Logger logger = LogManager.getLogger(ParanamerNameProvider.class);
+	
 	private final Paranamer info = new CachingParanamer(new AnnotationParanamer(new BytecodeReadingParanamer()));
 
 	@Override

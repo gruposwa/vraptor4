@@ -20,8 +20,8 @@ import java.util.LinkedList;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import br.com.caelum.vraptor.interceptor.InterceptorRegistry;
 
@@ -35,8 +35,8 @@ public class InterceptorStackHandlersCache {
 	private final InterceptorRegistry registry;
 	private final InterceptorHandlerFactory handlerFactory;
 
-	private final Logger logger = LoggerFactory.getLogger(InterceptorStackHandlersCache.class);
-
+	//private final Logger logger = LoggerFactory.getLogger(InterceptorStackHandlersCache.class);
+	private static final Logger logger = LogManager.getLogger(InterceptorStackHandlersCache.class);
 	/** 
 	 * @deprecated CDI eyes only
 	 */

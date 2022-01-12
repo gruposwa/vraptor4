@@ -21,13 +21,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.google.common.collect.ImmutableList;
 
 import br.com.caelum.iogi.Instantiator;
 import br.com.caelum.iogi.MultiInstantiator;
@@ -48,13 +50,11 @@ import br.com.caelum.vraptor.core.Converters;
 import br.com.caelum.vraptor.http.InvalidParameterException;
 import br.com.caelum.vraptor.validator.Message;
 
-import com.google.common.collect.ImmutableList;
-
 @RequestScoped
 public class VRaptorInstantiator implements InstantiatorWithErrors, Instantiator<Object> {
 	
-	private static final Logger logger = LoggerFactory.getLogger(VRaptorInstantiator.class);
-	
+	//private static final Logger logger = LoggerFactory.getLogger(VRaptorInstantiator.class);
+	private static final Logger logger = LogManager.getLogger(VRaptorInstantiator.class);
 	private MultiInstantiator multiInstantiator;
 	private List<Message> errors;
 	

@@ -16,7 +16,6 @@
 package br.com.caelum.vraptor.observer;
 
 import static java.util.Arrays.asList;
-import static org.slf4j.LoggerFactory.getLogger;
 
 import java.io.IOException;
 import java.util.List;
@@ -26,7 +25,8 @@ import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import br.com.caelum.vraptor.Consumes;
 import br.com.caelum.vraptor.controller.ControllerMethod;
@@ -52,7 +52,8 @@ public class DeserializingObserver {
 	private final Deserializers deserializers;
 	private final Container container;
 
-	private static final Logger logger = getLogger(DeserializingObserver.class);
+	//private static final Logger logger = getLogger(DeserializingObserver.class);
+	private static final Logger logger = LogManager.getLogger(DeserializingObserver.class);
 
 	/**
 	 * @deprecated CDI eyes only

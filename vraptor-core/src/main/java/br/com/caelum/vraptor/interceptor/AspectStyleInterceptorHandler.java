@@ -15,15 +15,14 @@
  */
 package br.com.caelum.vraptor.interceptor;
 
-import static org.slf4j.LoggerFactory.getLogger;
-
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.List;
 
 import javax.enterprise.inject.Vetoed;
 
-import org.slf4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import br.com.caelum.vraptor.Accepts;
 import br.com.caelum.vraptor.AfterCall;
@@ -37,8 +36,9 @@ import br.com.caelum.vraptor.ioc.Container;
 @Vetoed
 public class AspectStyleInterceptorHandler implements InterceptorHandler {
 
-	private static final Logger logger = getLogger(AspectStyleInterceptorHandler.class);
-
+	//private static final Logger logger = getLogger(AspectStyleInterceptorHandler.class);
+	private static final Logger logger = LogManager.getLogger(AspectStyleInterceptorHandler.class);
+	
 	private final StepInvoker stepInvoker;
 	private final Container container;
 	private final Class<?> interceptorClass;

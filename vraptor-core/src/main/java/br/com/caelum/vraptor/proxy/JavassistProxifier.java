@@ -19,14 +19,14 @@ import static javassist.util.proxy.ProxyFactory.isProxyClass;
 
 import java.lang.reflect.Method;
 
+import javax.enterprise.context.ApplicationScoped;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javassist.util.proxy.MethodFilter;
 import javassist.util.proxy.MethodHandler;
 import javassist.util.proxy.ProxyFactory;
-
-import javax.enterprise.context.ApplicationScoped;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Javassist implementation for {@link Proxifier}.
@@ -37,8 +37,8 @@ import org.slf4j.LoggerFactory;
 @ApplicationScoped
 public class JavassistProxifier implements Proxifier {
 
-	private static final Logger logger = LoggerFactory.getLogger(JavassistProxifier.class);
-
+	//private static final Logger logger = LoggerFactory.getLogger(JavassistProxifier.class);
+	private static final Logger logger = LogManager.getLogger(JavassistProxifier.class);
 	/**
 	 * Do not proxy these methods.
 	 */

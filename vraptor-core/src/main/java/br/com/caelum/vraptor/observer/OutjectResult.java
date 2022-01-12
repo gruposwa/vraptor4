@@ -17,15 +17,14 @@
 
 package br.com.caelum.vraptor.observer;
 
-import static org.slf4j.LoggerFactory.getLogger;
-
 import java.lang.reflect.Type;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
-import org.slf4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.core.MethodInfo;
@@ -41,8 +40,9 @@ import br.com.caelum.vraptor.interceptor.TypeNameExtractor;
 @ApplicationScoped
 public class OutjectResult {
 
-	private static final Logger logger = getLogger(OutjectResult.class);
-
+	//private static final Logger logger = getLogger(OutjectResult.class);
+	private static final Logger logger = LogManager.getLogger(OutjectResult.class);
+	
 	private final TypeNameExtractor extractor;
 
 	/**

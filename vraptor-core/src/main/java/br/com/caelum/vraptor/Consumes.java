@@ -23,6 +23,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import br.com.caelum.vraptor.serialization.DeserializerConfig;
+import br.com.caelum.vraptor.serialization.gson.GsonInterfaceBuilder;
 
 /**
  * Indicates that the controller method expects the specified MIME content-types
@@ -37,4 +38,5 @@ import br.com.caelum.vraptor.serialization.DeserializerConfig;
 public @interface Consumes {
 	String[] value() default {};
 	Class<? extends DeserializerConfig>[] options() default {};
+	Class<? extends GsonInterfaceBuilder>[] builder() default {};
 }

@@ -28,6 +28,9 @@ import java.util.ArrayList;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.controller.ControllerMethod;
 import br.com.caelum.vraptor.controller.HttpMethod;
@@ -39,13 +42,10 @@ import br.com.caelum.vraptor.http.route.MethodNotAllowedException;
 import br.com.caelum.vraptor.http.route.Router;
 import br.com.caelum.vraptor.validator.Message;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 @RequestScoped
 public class DefaultRefererResult implements RefererResult {
-	
-	private static final Logger logger = LoggerFactory.getLogger(DefaultRefererResult.class);
+	private static final Logger logger = LogManager.getLogger(DefaultRefererResult.class);
+	//private static final Logger logger = LoggerFactory.getLogger(DefaultRefererResult.class);
 	
 	private final MutableRequest request;
 	private final Result result;

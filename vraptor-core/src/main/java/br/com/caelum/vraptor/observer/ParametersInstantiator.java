@@ -19,7 +19,6 @@ package br.com.caelum.vraptor.observer;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Strings.isNullOrEmpty;
-import static org.slf4j.LoggerFactory.getLogger;
 
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -29,7 +28,8 @@ import javax.enterprise.context.Dependent;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
-import org.slf4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import br.com.caelum.vraptor.HeaderParam;
 import br.com.caelum.vraptor.core.MethodInfo;
@@ -52,8 +52,9 @@ import br.com.caelum.vraptor.view.FlashScope;
 @Dependent
 public class ParametersInstantiator {
 	
-	private static final Logger logger = getLogger(ParametersInstantiator.class);
-
+	//private static final Logger logger = getLogger(ParametersInstantiator.class);
+	private static final Logger logger = LogManager.getLogger(ParametersInstantiator.class);
+	
 	private final ParametersProvider provider;
 	private final MethodInfo methodInfo;
 	private final Validator validator;

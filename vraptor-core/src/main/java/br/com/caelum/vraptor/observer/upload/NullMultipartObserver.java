@@ -17,13 +17,13 @@
 package br.com.caelum.vraptor.observer.upload;
 
 import static com.google.common.base.Strings.nullToEmpty;
-import static org.slf4j.LoggerFactory.getLogger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import br.com.caelum.vraptor.events.ControllerFound;
 
@@ -38,8 +38,8 @@ import br.com.caelum.vraptor.events.ControllerFound;
 @ApplicationScoped
 public class NullMultipartObserver {
 
-	private static final Logger logger = getLogger(NullMultipartObserver.class);
-
+	//private static final Logger logger = getLogger(NullMultipartObserver.class);
+	private static final Logger logger = LogManager.getLogger(NullMultipartObserver.class);
 	public void nullUpload(@Observes ControllerFound event, HttpServletRequest request) {
 		if (request.getMethod().toUpperCase().equals("POST")
 				&& nullToEmpty(request.getContentType()).startsWith("multipart/form-data")) {

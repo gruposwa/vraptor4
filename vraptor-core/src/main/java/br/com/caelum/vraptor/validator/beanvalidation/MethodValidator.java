@@ -15,8 +15,6 @@
  */
 package br.com.caelum.vraptor.validator.beanvalidation;
 
-import static org.slf4j.LoggerFactory.getLogger;
-
 import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.Locale;
@@ -33,7 +31,8 @@ import javax.validation.Path.ParameterNode;
 import javax.validation.metadata.BeanDescriptor;
 import javax.validation.metadata.MethodDescriptor;
 
-import org.slf4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import br.com.caelum.vraptor.controller.ControllerInstance;
 import br.com.caelum.vraptor.controller.ControllerMethod;
@@ -54,8 +53,8 @@ import br.com.caelum.vraptor.validator.Validator;
 @ApplicationScoped
 public class MethodValidator {
 
-	private static final Logger logger = getLogger(MethodValidator.class);
-
+	//private static final Logger logger = getLogger(MethodValidator.class);
+	private static final Logger logger = LogManager.getLogger(MethodValidator.class);
 	private final Instance<Locale> locale;
 	private final MessageInterpolator interpolator;
 	private final javax.validation.Validator bvalidator;

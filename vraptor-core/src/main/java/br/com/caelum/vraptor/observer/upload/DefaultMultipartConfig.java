@@ -29,8 +29,10 @@ import java.security.PrivilegedAction;
 
 import javax.enterprise.context.ApplicationScoped;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import br.com.caelum.vraptor.core.DefaultInterceptorStack;
 
 /**
  * Default implementation for {@link MultipartConfig}.
@@ -43,8 +45,8 @@ import org.slf4j.LoggerFactory;
 @ApplicationScoped
 public class DefaultMultipartConfig implements MultipartConfig {
 
-	private final Logger logger = LoggerFactory.getLogger(DefaultMultipartConfig.class);
-
+	//private final Logger logger = LoggerFactory.getLogger(DefaultMultipartConfig.class);
+	private static final Logger logger = LogManager.getLogger(DefaultMultipartConfig.class);
 	private Path tmpdir;
 
 	@Override
